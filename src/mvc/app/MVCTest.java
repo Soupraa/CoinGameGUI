@@ -1,5 +1,7 @@
 package mvc.app;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -16,7 +18,8 @@ public class MVCTest {
 			{				
 				AppFrame app = new AppFrame();
 				app.setVisible(true);
-				app.setBounds(100, 100, 640, 480);
+				app.setBounds(200, 200, 1050, 570);
+				app.setMinimumSize(new Dimension(800,500));
 				app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});

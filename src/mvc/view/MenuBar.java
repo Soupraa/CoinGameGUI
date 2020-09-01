@@ -1,28 +1,40 @@
 package mvc.view;
 
+import java.util.Collection;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import model.interfaces.GameEngine;
-import mvc.controller.MenuController;
+import model.interfaces.Player;
+import mvc.controller.AddPlayerController;
+import mvc.controller.RemovePlayerController;
+
 
 public class MenuBar extends JMenuBar{
+	
 	private JMenuBar menuBar = new JMenuBar();
-	GameEngine engine;
-	public MenuBar(GameEngine engine) 
+	
+	
+	public MenuBar(GameEngine engine, AppFrame frame) 
 	{
-		this.engine = engine;
 		JMenu menu = new JMenu("Menu");
+		menu.updateUI();
 		menuBar.add(menu);
 		add(menuBar);
 		
+		//Addplayer menu
 		JMenuItem menuItem = new JMenuItem("Add Player");
-		MenuController addPlayerActionListener = new MenuController(engine);
+		menuItem.updateUI();
+		AddPlayerController addPlayerActionListener = new AddPlayerController(engine, frame);
 		menuItem.addActionListener(addPlayerActionListener);
 		menu.add(menuItem);
 		
-		//JMenuItem menuItem2 = new JMenuItem("Remove Player");
-		//menuItem2.addMouseListener(new MenuController());
-	}
+		//Remove player menu
+		JMenuItem menuItem2 = new JMenuItem("Remove Player");
+		RemovePlayerController removePlayer = new RemovePlayerController(engine, frame);
+		menuItem2.addActionListener(removePlayer);
+		menu.add(menuItem2);
+	}	
 }
